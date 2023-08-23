@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { useAppNavigation } from "../../hooks/navigation";
+import { useAppTranslation } from "../../translations";
 
 const Home = () => {
   const navigation = useAppNavigation();
+  const { t } = useAppTranslation();
   const _gotoSetting = () => {
     navigation.navigate("Main", {
       screen: "Setting",
@@ -20,6 +22,7 @@ const Home = () => {
             height: 50,
           }}></View>
       </TouchableOpacity>
+      <Text>{t("hello")}</Text>
     </View>
   );
 };
