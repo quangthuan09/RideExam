@@ -1,7 +1,8 @@
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, Setting } from "../screens";
-import { Colors } from "../theme";
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Colors } from '~/theme';
+import { Home, Setting } from '~/screens';
+import { S20 } from '~/theme/normalize';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,9 +13,13 @@ const MainNavigator = () => {
       screenOptions={{
         headerTintColor: Colors.white,
         headerStyle: {
-          backgroundColor: Colors.lightblue,
+          backgroundColor: Colors.palette,
         },
-      }}>
+        headerTitleStyle: {
+          fontSize: S20,
+        },
+      }}
+    >
       {screens.map((item) => (
         <Stack.Screen
           key={item.name}
@@ -28,19 +33,19 @@ const MainNavigator = () => {
 };
 const screens = [
   {
-    name: "Home",
+    name: 'Home',
     component: Home,
     options: {
       headerShown: true,
     },
   },
   {
-    name: "Setting",
+    name: 'Setting',
     component: Setting,
     options: {
       headerShown: true,
       headerBackTitleVisible: false,
-      headerTitle: "Cài đặt",
+      headerTitle: 'Thiết lập',
     },
   },
 ] as const;

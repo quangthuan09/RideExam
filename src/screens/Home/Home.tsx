@@ -4,7 +4,7 @@ import { FlatList, ListRenderItem, StyleSheet, Text, TouchableOpacity } from 're
 import { TItemFeater } from '~/@types/home';
 import { MAP_FEATURE_HOME } from '~/helper/constant';
 import { useAppNavigation } from '~/hooks/navigation';
-import { Colors, S16, S8 } from '~/theme';
+import { AppStyles, Colors, S12, S16, S8 } from '~/theme';
 import { useAppTranslation } from '~/translations';
 const Home = () => {
   const navigation = useAppNavigation();
@@ -40,13 +40,12 @@ const Home = () => {
       >
         <Icon name={item.icon} type="ionicon" size={50} color={Colors.white} />
         <Text style={styles.text}>{item.title}</Text>
-        <Text>{'dsdsd'}</Text>
       </TouchableOpacity>
     );
   }, []);
   return (
     <FlatList
-      style={styles.container}
+      style={AppStyles.container}
       data={MAP_FEATURE_HOME}
       renderItem={_renderItem}
       keyExtractor={(item) => item.id.toString()}
@@ -60,9 +59,6 @@ const Home = () => {
 
 export default Home;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   text: {
     color: Colors.white,
     paddingTop: S8,
@@ -77,5 +73,6 @@ const styles = StyleSheet.create({
     margin: S8 / 2,
     flex: 1,
     padding: S16,
+    borderRadius: S12,
   },
 });
