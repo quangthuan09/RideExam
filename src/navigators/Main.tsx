@@ -38,7 +38,9 @@ const screens = [
     name: "Setting",
     component: Setting,
     options: {
-      headerShown: false,
+      headerShown: true,
+      headerBackTitleVisible: false,
+      headerTitle: "Cài đặt",
     },
   },
 ] as const;

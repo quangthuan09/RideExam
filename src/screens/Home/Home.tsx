@@ -10,7 +10,7 @@ import {
 import React, { useCallback, useLayoutEffect } from "react";
 import { useAppNavigation } from "../../hooks/navigation";
 import { useAppTranslation } from "../../translations";
-import { MAP_FEATURE_HOME, ScreenWidth } from "../../helper/constant";
+import { MAP_FEATURE_HOME } from "../../helper/constant";
 import { TItemFeater } from "../../@types/home";
 import { Colors, S16, S8 } from "../../theme";
 import { Icon } from "@rneui/themed";
@@ -24,12 +24,12 @@ const Home = () => {
   };
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: "500 câu hỏi bằng lái a3",
+      title: t("500questionA3"),
       headerRight: () => {
         return (
-          <View>
-            <Icon name="g-translate" color="red" />
-          </View>
+          <TouchableOpacity onPress={_gotoSetting}>
+            <Icon name="settings-outline" color={Colors.white} type="ionicon" />
+          </TouchableOpacity>
         );
       },
     });
@@ -44,7 +44,12 @@ const Home = () => {
               backgroundColor: item.backgroundColor,
             },
           ]}>
-          <Image style={styles.image} source={item.image} />
+          <Icon
+            name={item.icon}
+            type="ionicon"
+            size={50}
+            color={Colors.white}
+          />
           <Text style={styles.text}>{item.title}</Text>
         </TouchableOpacity>
       );
@@ -52,18 +57,16 @@ const Home = () => {
     []
   );
   return (
-    <>
-      <FlatList
-        style={styles.container}
-        data={MAP_FEATURE_HOME}
-        renderItem={_renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
-        contentContainerStyle={styles.contentContainer}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-      />
-    </>
+    <FlatList
+      style={styles.container}
+      data={MAP_FEATURE_HOME}
+      renderItem={_renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2}
+      contentContainerStyle={styles.contentContainer}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+    />
   );
 };
 
@@ -86,10 +89,5 @@ const styles = StyleSheet.create({
     margin: S8 / 2,
     flex: 1,
     padding: S16,
-  },
-  image: {
-    height: 70,
-    width: 70,
-    resizeMode: "contain",
   },
 });
