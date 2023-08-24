@@ -1,11 +1,11 @@
 import { Icon } from '@rneui/themed';
 import React, { useCallback, useLayoutEffect } from 'react';
 import { FlatList, ListRenderItem, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { TItemFeater } from '../../@types/home';
-import { MAP_FEATURE_HOME } from '../../helper/constant';
-import { useAppNavigation } from '../../hooks/navigation';
-import { Colors, S16, S8 } from '../../theme';
-import { useAppTranslation } from '../../translations';
+import { TItemFeater } from '~/@types/home';
+import { MAP_FEATURE_HOME } from '~/helper/constant';
+import { useAppNavigation } from '~/hooks/navigation';
+import { Colors, S16, S8 } from '~/theme';
+import { useAppTranslation } from '~/translations';
 const Home = () => {
   const navigation = useAppNavigation();
   const { t } = useAppTranslation();
