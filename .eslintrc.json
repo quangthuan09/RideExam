@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-native", "prettier"],
+  "rules": {
+    "no-console": 1,
+    "react-native/no-unused-styles": 1,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": 1,
+    "quotes": ["error", "single"],
+    "object-shorthand": 1
+  }
+}

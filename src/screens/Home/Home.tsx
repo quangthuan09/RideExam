@@ -1,30 +1,24 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-  ListRenderItem,
-  Image,
-} from "react-native";
-import React, { useCallback, useLayoutEffect } from "react";
-import { useAppNavigation } from "../../hooks/navigation";
-import { useAppTranslation } from "../../translations";
-import { MAP_FEATURE_HOME } from "../../helper/constant";
-import { TItemFeater } from "../../@types/home";
-import { Colors, S16, S8 } from "../../theme";
-import { Icon } from "@rneui/themed";
+import { Icon } from '@rneui/themed';
+import React, { useCallback, useLayoutEffect } from 'react';
+import { FlatList, ListRenderItem, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { TItemFeater } from '../../@types/home';
+import { MAP_FEATURE_HOME } from '../../helper/constant';
+import { useAppNavigation } from '../../hooks/navigation';
+import { Colors, S16, S8 } from '../../theme';
+import { useAppTranslation } from '../../translations';
 const Home = () => {
   const navigation = useAppNavigation();
   const { t } = useAppTranslation();
-  const _gotoSetting = () => {
-    navigation.navigate("Main", {
-      screen: "Setting",
+
+  const _gotoSetting = useCallback(() => {
+    navigation.navigate('Main', {
+      screen: 'Setting',
     });
-  };
+  }, [navigation]);
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: t("500questionA3"),
+      title: t('500questionA3'),
       headerRight: () => {
         return (
           <TouchableOpacity onPress={_gotoSetting}>
@@ -33,29 +27,23 @@ const Home = () => {
         );
       },
     });
+  }, [_gotoSetting, navigation, t]);
+  const _renderItem: ListRenderItem<TItemFeater> = useCallback(({ item, index }) => {
+    return (
+      <TouchableOpacity
+        style={[
+          styles.item,
+          {
+            backgroundColor: item.backgroundColor,
+          },
+        ]}
+      >
+        <Icon name={item.icon} type="ionicon" size={50} color={Colors.white} />
+        <Text style={styles.text}>{item.title}</Text>
+        <Text>{'dsdsd'}</Text>
+      </TouchableOpacity>
+    );
   }, []);
-  const _renderItem: ListRenderItem<TItemFeater> = useCallback(
-    ({ item, index }) => {
-      return (
-        <TouchableOpacity
-          style={[
-            styles.item,
-            {
-              backgroundColor: item.backgroundColor,
-            },
-          ]}>
-          <Icon
-            name={item.icon}
-            type="ionicon"
-            size={50}
-            color={Colors.white}
-          />
-          <Text style={styles.text}>{item.title}</Text>
-        </TouchableOpacity>
-      );
-    },
-    []
-  );
   return (
     <FlatList
       style={styles.container}
@@ -84,8 +72,8 @@ const styles = StyleSheet.create({
     paddingTop: S8,
   },
   item: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: S8 / 2,
     flex: 1,
     padding: S16,
