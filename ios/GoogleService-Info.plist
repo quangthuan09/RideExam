@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>144918114618-gbt5falp0283vha4rfg2kf8g06reuchi.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.144918114618-gbt5falp0283vha4rfg2kf8g06reuchi</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>144918114618-2ir5ktlkid8s1srrk7r00c73uofef0i1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDIPAWbxXgc1CJCH4aHmnA1FAehAKy0F_w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>144918114618</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.RideExam</string>
+	<key>PROJECT_ID</key>
+	<string>rideexam</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rideexam.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:144918114618:ios:b7d603949d152e14bfa003</string>
+</dict>
+</plist>

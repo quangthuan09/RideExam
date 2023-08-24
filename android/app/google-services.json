@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "144918114618",
+    "project_id": "rideexam",
+    "storage_bucket": "rideexam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144918114618:android:bd17351c0044ca0fbfa003",
+        "android_client_info": {
+          "package_name": "com.rideexam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144918114618-2ir5ktlkid8s1srrk7r00c73uofef0i1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rideexam",
+            "certificate_hash": "d5b681c42e4dd7ffe262c261dd0fabe395053b1d"
+          }
+        },
+        {
+          "client_id": "144918114618-18lv141mk4ajlvkg8dvm0ecs08d4ur5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKRyYnCh-TJiK5asYeYf3BMSJamdFHt2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144918114618-18lv141mk4ajlvkg8dvm0ecs08d4ur5q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "144918114618-gbt5falp0283vha4rfg2kf8g06reuchi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.RideExam"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
