@@ -1691,6 +1691,16 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
+"@react-native-firebase/firestore@^18.3.1":
+  version "18.3.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-18.3.1.tgz#337304eee2570bfe58d66dba19d2c1a0ba865b1f"
+  integrity sha512-+ot8gdZufsfXGbqW6F4sORxEPXhW2l/LnbJBKxhCVM+w0FikYJJu3VtEneumvojNP4KC0Ci+xn6aCvI5qkqZ6Q==
+
+"@react-native-firebase/storage@^18.3.1":
+  version "18.3.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-18.3.1.tgz#4441b5700354e7dbf1bf9f182f05fb8ea759f7ea"
+  integrity sha512-+jTNBN4XiddEMxUbk0KIiiKanyhnwKBA73iZthMKmqwEJLWjxcLNAc/7GRoijvv+IhY7YKIUvkchtunZUaCXYA==
+
 "@react-native/assets-registry@^0.72.0":
   version "0.72.0"
   resolved "https://registry.npmjs.org/@react-native/assets-registry/-/assets-registry-0.72.0.tgz"
@@ -4678,6 +4688,11 @@ joi@^17.2.1:
     "@sideway/address" "^4.1.3"
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
+
+jotai@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.4.0.tgz#3f0b30fa54dfb4b4bb22141264512bccca5f5149"
+  integrity sha512-NUHJdAJe3C8Prf0DD6EzezCATjkNvfCNI7pgkaX7bCPPsqE0oK8L9RzZsEhz/UxFoGRayXwacTvAli0VEYKkqQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"

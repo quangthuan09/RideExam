@@ -3,13 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Colors } from '~/theme';
 import { Home, Setting } from '~/screens';
 import { S20 } from '~/theme/normalize';
+import { Screens } from './screens';
 
 const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName={Screens.Home}
       screenOptions={{
         headerTintColor: Colors.white,
         headerStyle: {
@@ -33,14 +34,14 @@ const MainNavigator = () => {
 };
 const screens = [
   {
-    name: 'Home',
+    name: Screens.Home,
     component: Home,
     options: {
       headerShown: true,
     },
   },
   {
-    name: 'Setting',
+    name: Screens.Setting,
     component: Setting,
     options: {
       headerShown: true,

@@ -1,14 +1,22 @@
 import { Icon } from '@rneui/themed';
-import React, { useCallback, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { FlatList, ListRenderItem, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TItemFeater } from '~/@types/home';
 import { MAP_FEATURE_HOME } from '~/helper/constant';
 import { useAppNavigation } from '~/hooks/navigation';
 import { AppStyles, Colors, S12, S16, S8 } from '~/theme';
 import { useAppTranslation } from '~/translations';
+// import firestore from '@react-native-firebase/firestore';
+
 const Home = () => {
   const navigation = useAppNavigation();
   const { t } = useAppTranslation();
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const usersCollection = await firestore().collection('topics').get();
+  //   };
+  //   getData();
+  // }, []);
 
   const _gotoSetting = useCallback(() => {
     navigation.navigate('Main', {

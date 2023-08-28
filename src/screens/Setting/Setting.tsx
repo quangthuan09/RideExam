@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native';
 import React, { useCallback, useLayoutEffect } from 'react';
-import { useAppNavigation } from '~/hooks/navigation';
+import { Text, View } from 'react-native';
 import HeaderRight from '~/common/HeaderRight';
+import { useGetTopics } from '~/helper/fetchData';
+import { useAppNavigation } from '~/hooks/navigation';
 import { AppStyles } from '~/theme';
-
 const Setting = () => {
   const navigation = useAppNavigation();
-
+  const data = useGetTopics();
   const _handlePressDone = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
@@ -18,7 +18,14 @@ const Setting = () => {
   }, [_handlePressDone, navigation]);
   return (
     <View style={AppStyles.container}>
-      <Text>Setting</Text>
+      {data.map((item, index) => {
+        return (
+          <View key={index}>
+            <Text>{item.name}</Text>
+            <Text>{item.description}</Text>
+          </View>
+        );
+      })}
     </View>
   );
 };

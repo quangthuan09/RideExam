@@ -8,13 +8,8 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 # Override Firebase SDK Version
-$FirebaseSDKVersion = '10.12.0'
 $RNFirebaseAsStaticFramework = true
 
-pod 'Firebase', :modular_headers => true
-pod 'FirebaseCore', :modular_headers => true
-pod 'FirebaseCoreInternal', :modular_headers => true
-pod 'GoogleUtilities', :modular_headers => true
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
 # because `react-native-flipper` depends on (FlipperKit,...) that will be excluded
@@ -35,7 +30,7 @@ end
 
 target 'RideExam' do
   config = use_native_modules!
-
+  use_frameworks! :linkage => :static
   # Flags change depending on the env values.
   flags = get_default_flags()
 
