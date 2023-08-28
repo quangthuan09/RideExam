@@ -6,17 +6,10 @@ import { MAP_FEATURE_HOME } from '~/helper/constant';
 import { useAppNavigation } from '~/hooks/navigation';
 import { AppStyles, Colors, S12, S16, S8 } from '~/theme';
 import { useAppTranslation } from '~/translations';
-// import firestore from '@react-native-firebase/firestore';
 
 const Home = () => {
   const navigation = useAppNavigation();
   const { t } = useAppTranslation();
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const usersCollection = await firestore().collection('topics').get();
-  //   };
-  //   getData();
-  // }, []);
 
   const _gotoSetting = useCallback(() => {
     navigation.navigate('Main', {
@@ -26,7 +19,7 @@ const Home = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: t('500questionA3'),
+      title: t('200questionA1'),
       headerRight: () => {
         return (
           <TouchableOpacity onPress={_gotoSetting}>
@@ -36,21 +29,75 @@ const Home = () => {
       },
     });
   }, [_gotoSetting, navigation, t]);
-  const _renderItem: ListRenderItem<TItemFeater> = useCallback(({ item, index }) => {
-    return (
-      <TouchableOpacity
-        style={[
-          styles.item,
-          {
-            backgroundColor: item.backgroundColor,
-          },
-        ]}
-      >
-        <Icon name={item.icon} type="ionicon" size={50} color={Colors.white} />
-        <Text style={styles.text}>{item.title}</Text>
-      </TouchableOpacity>
-    );
-  }, []);
+
+  const _handleGoto = useCallback(
+    (item: TItemFeater) => {
+      switch (item.id) {
+        case 1:
+          navigation.navigate('Main', {
+            screen: 'RandomQuest',
+          });
+          return;
+        case 2:
+          navigation.navigate('Main', {
+            screen: 'SetTopic',
+          });
+          return;
+        case 3:
+          navigation.navigate('Main', {
+            screen: 'SeeWrongAnswer',
+          });
+          return;
+        case 4:
+          navigation.navigate('Main', {
+            screen: 'StudyQuestion',
+          });
+          return;
+        case 5:
+          navigation.navigate('Main', {
+            screen: 'Signs',
+          });
+          return;
+        case 6:
+          navigation.navigate('Main', {
+            screen: 'Tips',
+          });
+          return;
+        case 7:
+          navigation.navigate('Main', {
+            screen: 'Traps',
+          });
+          return;
+        case 8:
+          navigation.navigate('Main', {
+            screen: 'TopWrongAnswer',
+          });
+          return;
+        default:
+          break;
+      }
+    },
+    [navigation]
+  );
+  const _renderItem: ListRenderItem<TItemFeater> = useCallback(
+    ({ item, index }) => {
+      return (
+        <TouchableOpacity
+          style={[
+            styles.item,
+            {
+              backgroundColor: item.backgroundColor,
+            },
+          ]}
+          onPress={() => _handleGoto(item)}
+        >
+          <Icon name={item.icon} type="ionicon" size={50} color={Colors.white} />
+          <Text style={styles.text}>{item.title}</Text>
+        </TouchableOpacity>
+      );
+    },
+    [_handleGoto]
+  );
   return (
     <FlatList
       style={AppStyles.container}
