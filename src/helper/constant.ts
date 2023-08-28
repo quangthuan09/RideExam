@@ -66,3 +66,16 @@ export const MAP_FEATURE_HOME: Array<TItemFeater> = [
     icon: 'close-circle-outline',
   },
 ];
+
+export const FORMAT_ANSWER = [
+  {
+    id: 1,
+    type: 1,
+    title: 'Khi kết thúc bài thi',
+  },
+  {
+    id: 2,
+    type: 2,
+    title: 'Khi chọn xong câu trả lời',
+  },
+];

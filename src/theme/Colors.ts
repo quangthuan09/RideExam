@@ -14,4 +14,5 @@ export const Colors = {
   palette1: '#93BFCF',
   palette2: '#BDCDD6',
   palette3: '#EEE9DA',
+  black: 'black',
 };
