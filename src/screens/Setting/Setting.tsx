@@ -1,22 +1,36 @@
 import { Icon } from '@rneui/themed';
-import React, { useCallback, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FORMAT_ANSWER } from '~/helper/constant';
-import { useGetTopics } from '~/helper/fetchData';
 import { useAppNavigation } from '~/hooks/navigation';
 import { AppStyles, Colors, S16 } from '~/theme';
 import { S8, paddingBottom } from '~/theme/normalize';
 import DeviceInfo from 'react-native-device-info';
+import { useAppDispatch, useAppSelector } from '~/store';
+import { TTopic } from '~/store/setting/type';
+import { setTopicChoose } from '~/store/setting/reducer';
 
 const Setting = () => {
   const navigation = useAppNavigation();
-  const data = useGetTopics();
-  const [selectedCert, setSelectedCert] = useState(0);
-  const [selectedAnswerType, setSelectedAnswerType] = useState(0);
+  const dispatch = useAppDispatch();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const setting = useAppSelector((state) => state.setting.topics);
+  const topicChoose = useAppSelector((state) => state.setting.topicsChoose);
+  const [selectedCert, setSelectedCert] = useState<TTopic>(topicChoose);
+  const [selectedAnswerType, setSelectedAnswerType] = useState<number>();
+
   const _handlePressDone = useCallback(() => {
     navigation.goBack();
-  }, [navigation]);
+    if (selectedCert?.type) dispatch(setTopicChoose(selectedCert));
+  }, [dispatch, navigation, selectedCert]);
 
+  const sortData = useMemo(() => {
+    if (setting) {
+      return [...setting]?.sort((a, b) => a.type.localeCompare(b.type));
+    }
+    return [];
+  }, [setting]);
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -27,8 +41,8 @@ const Setting = () => {
     });
   }, [_handlePressDone, navigation]);
 
-  const _handleChooseCert = (index: number) => {
-    setSelectedCert(index);
+  const _handleChooseCert = (item: TTopic, index: number) => {
+    setSelectedCert(item);
   };
   const _handleChooseAnswerType = (index: number) => {
     setSelectedAnswerType(index);
@@ -37,40 +51,38 @@ const Setting = () => {
     <ScrollView style={AppStyles.container} contentContainerStyle={styles.container}>
       <Text style={styles.label}>LOẠI BẰNG LÁI</Text>
       <View style={styles.listCert}>
-        {data
-          .sort((a, b) => a.type.localeCompare(b.type))
-          .map((item, index) => {
-            return (
-              <TouchableOpacity
-                key={index}
-                style={[
-                  styles.item,
-                  {
-                    borderBottomWidth: data?.length - 1 > index ? 0.5 : 0,
-                  },
-                ]}
-                onPress={() => _handleChooseCert(index)}
-              >
-                <View style={styles.f1}>
-                  <Text
-                    style={[
-                      styles.name,
-                      {
-                        color: selectedCert === index ? Colors.blue : Colors.black,
-                        fontWeight: selectedCert === index ? 'bold' : 'normal',
-                      },
-                    ]}
-                  >
-                    {item.name}
-                  </Text>
-                  <Text>{item.description}</Text>
-                </View>
-                {selectedCert === index && (
-                  <Icon name={'checkmark'} type="ionicon" color={Colors.blue} />
-                )}
-              </TouchableOpacity>
-            );
-          })}
+        {sortData.map((item, index) => {
+          return (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.item,
+                {
+                  borderBottomWidth: sortData?.length - 1 > index ? 0.5 : 0,
+                },
+              ]}
+              onPress={() => _handleChooseCert(item, index)}
+            >
+              <View style={styles.f1}>
+                <Text
+                  style={[
+                    styles.name,
+                    {
+                      color: selectedCert?.type === item.type ? Colors.blue : Colors.black,
+                      fontWeight: selectedCert?.type === item.type ? 'bold' : 'normal',
+                    },
+                  ]}
+                >
+                  {item.name}
+                </Text>
+                <Text>{item.description}</Text>
+              </View>
+              {selectedCert?.type === item.type && (
+                <Icon name={'checkmark'} type="ionicon" color={Colors.blue} />
+              )}
+            </TouchableOpacity>
+          );
+        })}
       </View>
       <Text style={styles.label}>HIỂN THỊ ĐÁP ÁN CỦA CÂU HỎI</Text>
       <View style={styles.listCert}>
