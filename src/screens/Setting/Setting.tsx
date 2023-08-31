@@ -21,7 +21,9 @@ const Setting = () => {
   const [selectedAnswerType, setSelectedAnswerType] = useState<number>();
 
   const _handlePressDone = useCallback(() => {
-    navigation.goBack();
+    navigation.replace('Main', {
+      screen: 'Home',
+    });
     if (selectedCert?.type) dispatch(setTopicChoose(selectedCert));
   }, [dispatch, navigation, selectedCert]);
 

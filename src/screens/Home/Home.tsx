@@ -1,24 +1,17 @@
 import { Icon } from '@rneui/themed';
-import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useLayoutEffect } from 'react';
 import { FlatList, ListRenderItem, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TItemFeater } from '~/@types/home';
 import { MAP_FEATURE_HOME } from '~/helper/constant';
-import { useGetTopics } from '~/helper/fetchData';
 import { useAppNavigation } from '~/hooks/navigation';
-import { useAppDispatch } from '~/store';
-import { setTopics } from '~/store/setting/reducer';
+import { useAppSelector } from '~/store';
 import { AppStyles, Colors, S12, S16, S8 } from '~/theme';
 import { useAppTranslation } from '~/translations';
 
 const Home = () => {
   const navigation = useAppNavigation();
   const { t } = useAppTranslation();
-  const dispatch = useAppDispatch();
-  const data = useGetTopics();
-
-  useEffect(() => {
-    if (data) dispatch(setTopics(data));
-  }, [data, dispatch]);
+  const { topicsChoose } = useAppSelector((state) => state.setting);
   const _gotoSetting = useCallback(() => {
     navigation.navigate('Main', {
       screen: 'Setting',
@@ -27,7 +20,7 @@ const Home = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: t('200questionA1'),
+      title: topicsChoose.name,
       headerRight: () => {
         return (
           <TouchableOpacity onPress={_gotoSetting}>
@@ -36,7 +29,7 @@ const Home = () => {
         );
       },
     });
-  }, [_gotoSetting, navigation, t]);
+  }, [_gotoSetting, navigation, t, topicsChoose.name]);
 
   const _handleGoto = useCallback(
     (item: TItemFeater) => {

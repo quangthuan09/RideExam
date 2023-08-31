@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FetchApi } from './api';
-import { TTopicItem } from './type';
+import { useAppDispatch } from '~/store';
+import { setTopics } from '~/store/setting/reducer';
 
 export const useGetTopics = () => {
-  const [data, setData] = useState<Array<TTopicItem>>([]);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     const fetch = async () => {
       const resData = await FetchApi.getTopics();
-      setData(resData);
+      dispatch(setTopics(resData));
     };
     fetch();
-  }, []);
-  return data;
+  }, [dispatch]);
+  return null;
 };

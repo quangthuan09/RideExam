@@ -1,25 +1,20 @@
-import {
-  // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-  useNavigation,
-  RouteProp,
-  // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-  useRoute,
-  NavigationProp,
-  NavigationState,
-} from "@react-navigation/native";
-import { ApplicationStackParamList, TEventMap } from "../@types/navigation";
-import { StackHeaderOptions } from "@react-navigation/stack/lib/typescript/src/types";
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ApplicationStackParamList } from '../@types/navigation';
 
 export const useAppNavigation = () => {
+  // return useNavigation<
+  //   NavigationProp<
+  //     ApplicationStackParamList,
+  //     keyof ApplicationStackParamList,
+  //     undefined,
+  //     NavigationState<ApplicationStackParamList>,
+  //     StackHeaderOptions,
+  //     TEventMap
+  //   >
+  // >();
   return useNavigation<
-    NavigationProp<
-      ApplicationStackParamList,
-      keyof ApplicationStackParamList,
-      undefined,
-      NavigationState<ApplicationStackParamList>,
-      StackHeaderOptions,
-      TEventMap
-    >
+    NativeStackNavigationProp<ApplicationStackParamList, keyof ApplicationStackParamList, undefined>
   >();
 };
 

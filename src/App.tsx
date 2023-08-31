@@ -1,5 +1,7 @@
 import React from 'react';
 import ApplicationNavigator from './navigators/Application';
+import { Provider } from 'react-redux';
+import { store } from '~/store';
 
 if (__DEV__) {
   import('../ReactotronConfig').then(() => console.log('Reactotron Configured'));
@@ -7,7 +9,9 @@ if (__DEV__) {
 const App = () => {
   return (
     <>
-      <ApplicationNavigator />
+      <Provider store={store}>
+        <ApplicationNavigator />
+      </Provider>
     </>
   );
 };
